@@ -1,3 +1,5 @@
+SEED = 10
+
 TARGET = "category"
 
 ALL_FEATURES = [
