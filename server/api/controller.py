@@ -3,7 +3,7 @@ import pandas as pd
 from flask import Blueprint, request, jsonify
 from processing.preprocessors import ProductCategorizer
 from config.config import FEATURES_TO_DROP, FEATURES_TO_NORMALIZE
-#from api.validation import validate_input
+from api.validation import validate_input
 
 #LOAD MODELS
 categorizer = ProductCategorizer()
@@ -25,10 +25,12 @@ def predict():
         received_json = request.get_json()
         
         #VALIDATE INPUT
-        #validated_data, errors = validate_input(received_json)
-        #if errors != None:
-        #    return 'There are errors in input data, please check.', 400
-        data = pd.DataFrame(received_json)
+        validated_data, errors = validate_input(received_json)
+        
+        if errors != None:
+            return 'There are errors in input data, please check.', 400
+        
+        data = pd.DataFrame(validated_data)
         input_data, _ = categorizer.data_transformer(data, 
                                                      FEATURES_TO_DROP, 
                                                      FEATURES_TO_NORMALIZE)
