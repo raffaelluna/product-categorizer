@@ -17,7 +17,7 @@ def health():
     if request.method == 'GET':
         return 'ok', 200
     
-@categorizer_app.route('/v1/predict', methods=['POST'])
+@categorizer_app.route('/v1/categorize', methods=['POST'])
 def predict():
     if request.method == 'POST':
         
