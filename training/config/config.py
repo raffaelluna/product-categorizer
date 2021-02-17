@@ -35,3 +35,9 @@ FEATURES_TO_SCALE = [
     "weight",
     "minimum_quantity"
 ]
+
+FEATURES_TO_NORMALIZE = [
+    "query",
+    "title",
+    "concatenated_tags"
+]
