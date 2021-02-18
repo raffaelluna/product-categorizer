@@ -39,5 +39,8 @@ USER ${USER_ID}:${GROUP_ID}
 # Expose Flask to outside the container
 EXPOSE ${API_PORT}
 
+# Execute pytest to test our components
+#CMD pytest -V
+
 # By default, execute Flask
 CMD flask run --host ${API_HOST} --port ${API_PORT}
