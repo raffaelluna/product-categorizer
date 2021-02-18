@@ -9,7 +9,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from stop_words import get_stop_words
 
 import nltk
-nltk.download('rslp')
+#nltk.download('rslp')
 
 import dotenv
 dotenv.load_dotenv()
@@ -30,7 +30,7 @@ class ProductCategorizer:
         self.labelencoder = model['Label Encoder']
         
         #portuguese stemmer
-        self.stemmer = nltk.stem.RSLPStemmer()
+        #self.stemmer = nltk.stem.RSLPStemmer()
     
     @staticmethod
     def accents_remover(text):
@@ -62,8 +62,8 @@ class ProductCategorizer:
         text = self.special_char_remover(text)
         text = self.stop_words_remover(text)
         
-        if stem:
-            text = self.text_stemmer(text)
+        #if stem:
+        #    text = self.text_stemmer(text)
             
         return text
     

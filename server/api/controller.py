@@ -28,7 +28,7 @@ def predict():
         validated_data, errors = validate_input(received_json)
         
         if errors != None:
-            return 'There are errors in input data, please check.', 400
+            return f'There are errors in input data, please check. Error: {errors}', 400
         
         data = pd.DataFrame(validated_data)
         input_data, _ = categorizer.data_transformer(data, 
