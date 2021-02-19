@@ -1,6 +1,5 @@
 import os
 import pickle
-import nltk
 import unicodedata
 import re
 import pandas as pd
@@ -8,7 +7,7 @@ import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from stop_words import get_stop_words
 
-import nltk
+#import nltk
 #nltk.download('rslp')
 
 import dotenv
