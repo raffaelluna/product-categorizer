@@ -24,13 +24,19 @@ def predict():
         #GET JSON DATA
         received_json = request.get_json()
         
-        #VALIDATE INPUT
-        validated_data, errors = validate_input(received_json)
-        
-        if errors != None:
-            return f'There are errors in input data, please check. Error: {errors}', 400
+        if received_json != None:
+            #VALIDATE INPUT
+            validated_data, errors = validate_input(received_json)
+            
+            if errors != None:
+                return f'There are errors in input data, please check. Error: {errors}', 400
+        else:
+            return 'No JSON file received, please check.', 400
         
         data = pd.DataFrame(validated_data)
+        
+        #TODO: MAKE A FUNCTION TO SAVE NEW DATA INTO DATABASE
+        
         input_data, _ = categorizer.data_transformer(data, 
                                                      FEATURES_TO_DROP, 
                                                      FEATURES_TO_NORMALIZE)

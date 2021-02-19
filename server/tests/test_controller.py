@@ -2,6 +2,7 @@
 ###VERIFICAR SE O ENDPOINT V1/CATEGORIZE RETORNA 200 QUANDO RECEBE JSON VALIDO - ok
 ###VERIFICAR SE O ENDPOINT V1/CATEGORIZE RETORNA 400 QUANDO RECEBE JSON INVALIDO - ok
 ###VERIFICAR SE A PREDIÇÃO COM JSON VALIDO RETORN UMA LISTA COM TAMANHO 500 - ok
+###VERIFICAR SE RECEBEU JSON VAZIO RETORNA 400 - ok
 ###UM ASSERT POR TEST
 import os
 import json
@@ -42,5 +43,11 @@ def test_invalid_json_returns_400(api_test_client):
         invalid_json = json.load(f)
         
     response = api_test_client.post('v1/categorize', json=invalid_json)
+    
+    assert response.status_code == 400
+    
+def test_no_json_returns_400(api_test_client):
+    
+    response = api_test_client.post('v1/categorize', json=None)
     
     assert response.status_code == 400

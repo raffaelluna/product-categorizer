@@ -3,7 +3,8 @@ from marshmallow import ValidationError
 
 class InvalidEnputError(Exception):
     """Invalid model input."""
-    
+
+#https://marshmallow.readthedocs.io/en/stable/quickstart.html    
 class ProductCategorizerRequestSchema(Schema):
     product_id = fields.Integer(allow_none=False)
     seller_id = fields.Integer(allow_none=False)

@@ -71,21 +71,21 @@ class ProductCategorizer:
         X = df.copy()
         X = X.drop(labels=features_to_drop, axis=1)
         X = X.dropna(axis=0).reset_index(drop=True)
-        
+
         for feature in features_to_normalize:
             X[feature] = X[feature].apply(lambda x: self.text_normalizer(x, stem=False))
-            
+
         X.loc[:,'query_tags'] = X['query'] + str(' ') + X['concatenated_tags']
         X = X.drop(labels=['query', 'concatenated_tags'], axis=1)
-        
+
         y = X['category']
         X = X[['title', 'query_tags']]
         
         cv_ = CountVectorizer(vocabulary=self.cv.get_feature_names())
         X_counts = cv_.fit_transform(X.title, X.query_tags)
-        X_tdidf = self.tfidf.transform(X_counts)
+        X_tfidf = self.tfidf.transform(X_counts)
 
-        return X_tdidf, y
+        return X_tfidf, y
     
     def predict(self, X):
         self.pred = self.fitted_model.predict(X)
