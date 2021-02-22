@@ -4,6 +4,10 @@ import unicodedata
 import re
 import pandas as pd
 
+import sys
+sys.path.append('../')
+
+from config.logger import ProcessorLogger
 from sklearn.feature_extraction.text import CountVectorizer
 from stop_words import get_stop_words
 
@@ -14,7 +18,10 @@ import dotenv
 dotenv.load_dotenv()
 
 MODEL_PATH = os.getenv("MODEL_PATH")
+LOGS_PATH = os.getenv("LOGS_PATH")
 
+
+logger = ProcessorLogger()
 
 class ProductCategorizer:
     
@@ -56,37 +63,57 @@ class ProductCategorizer:
     
     def text_normalizer(self, text, stem=True):
         
-        text = self.text_to_lowercase(text)
-        text = self.accents_remover(text)
-        text = self.special_char_remover(text)
-        text = self.stop_words_remover(text)
-        
-        #if stem:
-        #    text = self.text_stemmer(text)
+        try:
+            text = self.text_to_lowercase(text)
+            text = self.accents_remover(text)
+            text = self.special_char_remover(text)
+            text = self.stop_words_remover(text)
             
-        return text
-    
+            #if stem:
+            #    text = self.text_stemmer(text)
+
+            return text
+        
+        except Exception as e:
+            logger.log_processor(file=LOGS_PATH, message=f"An exception occured in text_normalizer method! Exception: {e}")
+            raise Exception()
+        
     def data_transformer(self, df, features_to_drop, features_to_normalize):
         
-        X = df.copy()
-        X = X.drop(labels=features_to_drop, axis=1)
-        X = X.dropna(axis=0).reset_index(drop=True)
+        try:
+            X = df.copy()
+            X = X.drop(labels=features_to_drop, axis=1)
+            X = X.dropna(axis=0).reset_index(drop=True)
 
-        for feature in features_to_normalize:
-            X[feature] = X[feature].apply(lambda x: self.text_normalizer(x, stem=False))
+            for feature in features_to_normalize:
+                X[feature] = X[feature].apply(lambda x: self.text_normalizer(x, stem=False))
 
-        X.loc[:,'query_tags'] = X['query'] + str(' ') + X['concatenated_tags']
-        X = X.drop(labels=['query', 'concatenated_tags'], axis=1)
+            logger.log_processor(file=LOGS_PATH, message="Text normalized!")
 
-        y = X['category']
-        X = X[['title', 'query_tags']]
+            X.loc[:,'query_tags'] = X['query'] + str(' ') + X['concatenated_tags']
+            X = X.drop(labels=['query', 'concatenated_tags'], axis=1)
+
+            y = X['category']
+            X = X[['title', 'query_tags']]
+            
+            cv_ = CountVectorizer(vocabulary=self.cv.get_feature_names())
+            X_counts = cv_.fit_transform(X.title, X.query_tags)
+            X_tfidf = self.tfidf.transform(X_counts)
+
+            logger.log_processor(file=LOGS_PATH, message="All transformations done!")
+
+            return X_tfidf, y
         
-        cv_ = CountVectorizer(vocabulary=self.cv.get_feature_names())
-        X_counts = cv_.fit_transform(X.title, X.query_tags)
-        X_tfidf = self.tfidf.transform(X_counts)
-
-        return X_tfidf, y
+        except Exception as e:
+            logger.log_processor(file=LOGS_PATH, message=f"An exception occured in data_transformer method! Exception: {e}")
+            raise Exception()
     
     def predict(self, X):
-        self.pred = self.fitted_model.predict(X)
-        return self.labelencoder.inverse_transform(self.pred)
+        
+        try:
+            self.pred = self.fitted_model.predict(X)
+            return self.labelencoder.inverse_transform(self.pred)
+        
+        except Exception as e:
+            logger.log_processor(file=LOGS_PATH, message=f"An exception occured while predicting! Exception: {e}")
+            raise Exception()

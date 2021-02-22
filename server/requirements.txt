@@ -13,3 +13,4 @@ seaborn==0.11.1
 stop-words==2018.7.23
 werkzeug>=0.15
 python-dotenv
+pytest

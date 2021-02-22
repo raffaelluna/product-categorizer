@@ -1,6 +1,8 @@
 ###VERIFICAR SE O METODO text_normalizer FUNCIONA CORRETAMENTE - ok
 ###VERIFICAR SE O METODO data_transformer FUNCIONA CORRETAMENTE
 import pandas as pd
+import sys
+sys.path.append('../')
 
 from processing.preprocessors import ProductCategorizer
 from config.config import FEATURES_TO_DROP, FEATURES_TO_NORMALIZE

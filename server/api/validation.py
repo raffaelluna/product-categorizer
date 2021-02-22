@@ -29,8 +29,8 @@ def validate_input(data):
     errors = None
     try:
         schema.load(data)
-    except ValidationError as exc:
-        errors = exc.messages
+    except ValidationError as e:
+        errors = e.messages
         print(errors)  
     
     validated_data = data

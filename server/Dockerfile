@@ -40,7 +40,7 @@ USER ${USER_ID}:${GROUP_ID}
 EXPOSE ${API_PORT}
 
 # Execute pytest to test our components
-#CMD pytest -V
+#CMD pytest -v
 
 # By default, execute Flask
 CMD flask run --host ${API_HOST} --port ${API_PORT}

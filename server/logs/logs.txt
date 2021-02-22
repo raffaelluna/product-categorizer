@@ -1,0 +1,51 @@
+API: 2021-02-21/18:38:40 - JSON received with no errors!
+PREPROCESSOR: 2021-02-21/18:38:40 - Text normalized!
+PREPROCESSOR: 2021-02-21/18:38:40 - All transformations done!
+API: 2021-02-21/18:38:40 - JSON received with no errors!
+PREPROCESSOR: 2021-02-21/18:38:40 - Text normalized!
+PREPROCESSOR: 2021-02-21/18:38:40 - All transformations done!
+API: 2021-02-21/18:38:40 - JSON received with errors!
+API: 2021-02-21/18:38:40 - No JSON received!
+API: 2021-02-21/18:41:27 - JSON received with no errors!
+PREPROCESSOR: 2021-02-21/18:41:27 - Text normalized!
+PREPROCESSOR: 2021-02-21/18:41:27 - All transformations done!
+API: 2021-02-21/18:41:27 - JSON received with no errors!
+PREPROCESSOR: 2021-02-21/18:41:27 - Text normalized!
+PREPROCESSOR: 2021-02-21/18:41:27 - All transformations done!
+API: 2021-02-21/18:41:27 - JSON received with errors!
+API: 2021-02-21/18:41:27 - No JSON received!
+API: 2021-02-21/18:44:08 - JSON received with no errors!
+PREPROCESSOR: 2021-02-21/18:44:08 - Text normalized!
+PREPROCESSOR: 2021-02-21/18:44:08 - All transformations done!
+API: 2021-02-21/18:44:08 - JSON received with no errors!
+PREPROCESSOR: 2021-02-21/18:44:08 - Text normalized!
+PREPROCESSOR: 2021-02-21/18:44:08 - All transformations done!
+API: 2021-02-21/18:44:09 - JSON received with errors!
+API: 2021-02-21/18:44:09 - No JSON received!
+API: 2021-02-21/18:45:54 - JSON received with no errors!
+PREPROCESSOR: 2021-02-21/18:45:54 - Text normalized!
+PREPROCESSOR: 2021-02-21/18:45:54 - All transformations done!
+API: 2021-02-21/18:45:54 - JSON received with no errors!
+PREPROCESSOR: 2021-02-21/18:45:54 - Text normalized!
+PREPROCESSOR: 2021-02-21/18:45:54 - All transformations done!
+API: 2021-02-21/18:45:54 - JSON received with errors!
+API: 2021-02-21/18:45:54 - No JSON received!
+API: 2021-02-21/18:47:10 - JSON received with no errors!
+PREPROCESSOR: 2021-02-21/18:47:10 - Text normalized!
+PREPROCESSOR: 2021-02-21/18:47:10 - All transformations done!
+API: 2021-02-21/18:47:10 - JSON received with no errors!
+PREPROCESSOR: 2021-02-21/18:47:10 - Text normalized!
+PREPROCESSOR: 2021-02-21/18:47:10 - All transformations done!
+API: 2021-02-21/18:47:10 - JSON received with errors!
+API: 2021-02-21/18:47:10 - No JSON received!
+API: 2021-02-21/18:47:17 - JSON received with no errors!
+PREPROCESSOR: 2021-02-21/18:47:17 - Text normalized!
+PREPROCESSOR: 2021-02-21/18:47:17 - All transformations done!
+API: 2021-02-21/18:47:17 - JSON received with no errors!
+PREPROCESSOR: 2021-02-21/18:47:17 - Text normalized!
+PREPROCESSOR: 2021-02-21/18:47:17 - All transformations done!
+API: 2021-02-21/18:47:17 - JSON received with errors!
+API: 2021-02-21/18:47:17 - No JSON received!
+API: 2021-02-21/22:28:50 - JSON received with no errors!
+PREPROCESSOR: 2021-02-21/22:28:50 - Text normalized!
+PREPROCESSOR: 2021-02-21/22:28:50 - All transformations done!
